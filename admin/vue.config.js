@@ -5,7 +5,7 @@ module.exports = defineConfig({
   devServer: {
     proxy: {
       '/adminapi': {
-        target: 'http://192.168.195.128:3000',
+        target: 'http://192.168.1.4:3000',
         changeOrigin: true
       }
     }

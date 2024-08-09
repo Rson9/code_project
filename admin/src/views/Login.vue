@@ -55,6 +55,8 @@ import { ElMessage } from 'element-plus'
 import { loadSlim } from 'tsparticles-slim' // if you are going to use `loadSlim`, install the "tsparticles-slim" package too.
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+const store = useStore()
 const particlesInit = async (engine) => {
   //await loadFull(engine);
   await loadSlim(engine)
@@ -86,9 +88,10 @@ const submitForm = () => {
   loginFormRef.value.validate((valid) => {
     console.log(valid)
     if (valid) {
-      axios.post('/adminapi/user/login', loginForm).then((res) => {
-        console.log(res.data)
+      axios.post('/adminapi/user/login', loginForm).then(res => {
+        
         if (res.data.ActionType === 'OK') {
+          store.commit("changeUserInfo",res.data.data)
           router.push('/index')
         } else {
           ElMessage.error('用户名和密码不匹配')

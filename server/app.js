@@ -30,9 +30,10 @@ app.use((req, res, next) => {
     return
   }
   const token = req.headers['authorization'].split(' ')[1]
+
   if (token) {
     var payload = JWT.verify(token)
-    console.log(payload)
+    // console.log(payload)
 
     if (payload) {
       const newToken = JWT.generate(
@@ -40,9 +41,9 @@ app.use((req, res, next) => {
           _id: payload._id,
           username: payload.username
         },
-        '10s'
+        '1d'
       )
-      res.headers('Authorization', newToken)
+      res.header('Authorization', newToken)
       next()
     } else {
       res.status(401).send({ errCode: -1, errorInfo: 'token过期' })
