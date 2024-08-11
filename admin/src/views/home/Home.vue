@@ -4,7 +4,7 @@
       content="首页"
       icon=""
       title="企业门户网站管理系统"
-    > </el-page-header>
+    />
     <el-card class="box-card">
       <el-row>
         <el-col :span="4">
@@ -54,7 +54,7 @@ console.log(store.state.userInfo);
 
 const avatarUrl = computed(() =>
   store.state.userInfo.avatar
-    ? store.state.userInfo.avatar
+    ? 'http://localhost:3000' + store.state.userInfo.avatar
     : 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
 );
 const welcomeText = computed(() =>

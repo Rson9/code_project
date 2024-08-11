@@ -5,10 +5,11 @@ module.exports = defineConfig({
   devServer: {
     proxy: {
       '/adminapi': {
-        target: 'http://192.168.1.4:3000',
+        target: 'http://localhost:3000',
         changeOrigin: true
-      }
-    }
+      },
+    },
+    allowedHosts: "all"
   },
   chainWebpack: (config) => {
     config.plugin('define').tap((definitions) => {
@@ -19,6 +20,7 @@ module.exports = defineConfig({
       })
       return definitions
     })
-  }
+  },
+
 })
 
