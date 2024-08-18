@@ -10,6 +10,11 @@ const upload = multer({
 
 usersRouter.post('/adminapi/user/login', UserController.login)
 usersRouter.post('/adminapi/user/upload', upload.single('file'), UserController.upload)
+usersRouter.post('/adminapi/user/useradd', upload.single('file'), UserController.useradd)
+usersRouter.get('/adminapi/user/userlist', UserController.getlist)
+usersRouter.get('/adminapi/user/userlist/:id', UserController.getlist)
+usersRouter.put('/adminapi/user/userlist/:id', UserController.putlist)
+usersRouter.delete('/adminapi/user/userlist/:id', UserController.userdelete)
 
 module.exports = usersRouter
 

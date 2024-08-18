@@ -7,6 +7,7 @@ import NewsAdd from "../views/news-manage/NewsAdd";
 import ProductList from "../views/product-manage/ProductList";
 import ProductAdd from "../views/product-manage/ProductAdd";
 import NotFound from "../views/notfound/NotFound";
+import store from '@/store';
 const routes = [
   {
     path: "/index",
@@ -20,10 +21,26 @@ const routes = [
   {
     path: "/user-manage/useradd",
     component: UserAdd,
+    beforeEnter: (to, from, next) => {
+      if (store.state.userInfo.role === 1) {
+        next()
+      }
+      else {
+        next('/error')
+      }
+    }
   },
   {
     path: "/user-manage/userlist",
     component: UserList,
+    beforeEnter: (to, from, next) => {
+      if (store.state.userInfo.role === 1) {
+        next()
+      }
+      else {
+        next('/error')
+      }
+    }
   },
 
   {
@@ -44,12 +61,12 @@ const routes = [
     component: ProductList,
   },
   {
-    path:"/",
-    redirect:"/index"
+    path: "/",
+    redirect: "/index"
   },
   {
-    path:"/:pathMatch(.*)*",
-    component:NotFound,
+    path: "/:pathMatch(.*)*",
+    component: NotFound,
   }
 ];
 export default routes;

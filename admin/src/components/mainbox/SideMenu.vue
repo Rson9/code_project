@@ -6,18 +6,27 @@
       :default-active="route.fullPath"
     >
       <el-menu-item index="/index">
-        <el-icon><HomeFilled /></el-icon>
+        <el-icon>
+          <HomeFilled />
+        </el-icon>
         <span>首页</span>
       </el-menu-item>
 
       <el-menu-item index="/center">
-        <el-icon><Avatar /></el-icon>
+        <el-icon>
+          <Avatar />
+        </el-icon>
         <span>个人中心</span>
       </el-menu-item>
 
-      <el-sub-menu index="/user-manage">
+      <el-sub-menu
+        index="/user-manage"
+        v-admin
+      >
         <template #title>
-          <el-icon><UserFilled /></el-icon>
+          <el-icon>
+            <UserFilled />
+          </el-icon>
           <span>用户管理</span>
         </template>
         <el-menu-item index="/user-manage/useradd">添加用户</el-menu-item>
@@ -26,7 +35,9 @@
 
       <el-sub-menu index="/news-manage">
         <template #title>
-          <el-icon><MessageBox /></el-icon>
+          <el-icon>
+            <MessageBox />
+          </el-icon>
           <span>新闻管理</span>
         </template>
         <el-menu-item index="/news-manage/newsadd">创建新闻</el-menu-item>
@@ -35,7 +46,9 @@
 
       <el-sub-menu index="/product-manage">
         <template #title>
-          <el-icon><Reading /></el-icon>
+          <el-icon>
+            <Reading />
+          </el-icon>
           <span>产品管理</span>
         </template>
         <el-menu-item index="/product-manage/productadd">添加产品</el-menu-item>
@@ -56,15 +69,19 @@
 </style>
 
 <script setup>
-import {
-  HomeFilled,
-  Avatar,
-  UserFilled,
-  MessageBox,
-  Reading,
-  Pointer
-} from '@element-plus/icons-vue'
+import { HomeFilled, Avatar, UserFilled, MessageBox, Reading, Pointer } from '@element-plus/icons-vue'
 import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 const route = useRoute()
+const store = useStore()
+const vAdmin = {
+  mounted (el) {
+    // console.log(el);
+    if (store.state.userInfo.role !== 1) {
+      el.parentNode.removeChild(el)
+    }
+
+  }
+}
 </script>
 

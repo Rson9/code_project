@@ -3,28 +3,28 @@ import createPersistedState from 'vuex-persistedstate'
 export default createStore({
   state: {
     isCollapsed: false,
-    userInfo:{}
+    userInfo: {}
   },
   getters: {},
   mutations: {
-    changeCollapsed(state) {
+    changeCollapsed (state) {
       state.isCollapsed = !state.isCollapsed
     },
-    changeUserInfo(state,value){
-        state.userInfo={
-          ...state.userInfo,
-          ...value
-        }
+    changeUserInfo (state, value) {
+      state.userInfo = {
+        ...state.userInfo,
+        ...value
+      }
     },
-    clearUserInfo(state,value){
+    clearUserInfo (state, value) {
       state.userInfo = {}
-    }
+    },
   },
   actions: {},
   modules: {},
   plugins: [
     createPersistedState({
-      paths: ['isCollapsed','userInfo'] // 控制是否持久化
+      paths: ['isCollapsed', 'userInfo'] // 控制是否持久化
     })
   ]
 })
