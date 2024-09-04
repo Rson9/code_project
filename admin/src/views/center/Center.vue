@@ -3,7 +3,7 @@
     <el-page-header
       content="个人中心"
       icon=""
-      title="企业门户网站管理系统"
+      title="企业门户网站管理系统"  
     />
 
     <el-row
@@ -85,7 +85,7 @@
               type="primary"
               @click="submitForm()"
             >
-              登录
+              更新
             </el-button>
 
           </el-form>

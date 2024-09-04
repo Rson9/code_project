@@ -4,9 +4,11 @@ import UserList from "../views/user-manage/UserList";
 import UserAdd from "../views/user-manage/UserAdd";
 import NewsList from "../views/news-manage/NewsList";
 import NewsAdd from "../views/news-manage/NewsAdd";
+import NewsEdit from "../views/news-manage/NewsEdit";
 import ProductList from "../views/product-manage/ProductList";
 import ProductAdd from "../views/product-manage/ProductAdd";
 import NotFound from "../views/notfound/NotFound";
+
 import store from '@/store';
 const routes = [
   {
@@ -50,6 +52,10 @@ const routes = [
   {
     path: "/news-manage/newslist",
     component: NewsList,
+  },
+  {
+    path: "/news-manage/editnews/:id",
+    component: NewsEdit
   },
 
   {

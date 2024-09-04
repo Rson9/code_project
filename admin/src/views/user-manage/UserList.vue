@@ -217,7 +217,7 @@ const userdelete = data => {
         type: 'success',
         message: 'Delete completed',
       })
-      getTableData()
+      await getTableData()
 
     })
     .catch(() => {
