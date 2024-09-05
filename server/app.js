@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 var UserRouter = require('./routes/admin/UserRouter')
 var NewsRouter = require('./routes/admin/NewsRouter')
+const ProductRouter = require('./routes/admin/ProductRouter')
 const JWT = require('./util/JWT')
 
 var app = express()
@@ -53,6 +54,7 @@ app.use((req, res, next) => {
 })
 app.use(UserRouter)
 app.use(NewsRouter)
+app.use(ProductRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

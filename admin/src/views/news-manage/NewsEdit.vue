@@ -60,7 +60,7 @@
         <el-button
           type="primary"
           @click="submitForm()"
-        > 添加新闻 </el-button>
+        > 更新 </el-button>
       </el-form>
     </el-card>
   </div>

@@ -7,6 +7,7 @@ import NewsAdd from "../views/news-manage/NewsAdd";
 import NewsEdit from "../views/news-manage/NewsEdit";
 import ProductList from "../views/product-manage/ProductList";
 import ProductAdd from "../views/product-manage/ProductAdd";
+import ProductEdit from '../views/product-manage/ProductEdit';
 import NotFound from "../views/notfound/NotFound";
 
 import store from '@/store';
@@ -65,6 +66,10 @@ const routes = [
   {
     path: "/product-manage/productlist",
     component: ProductList,
+  },
+  {
+    path: "/product-manage/productedit/:id",
+    component: ProductEdit,
   },
   {
     path: "/",

@@ -2,8 +2,8 @@
   <div>
     <el-card>
       <el-page-header
-        content="添加产品"
-        icon=""
+        content="编辑产品"
+        @back="handleBack()"
         title="产品管理"
       />
 
@@ -56,7 +56,7 @@
           type="primary"
           @click="submitForm()"
         >
-          添加产品
+          更新产品
         </el-button>
 
       </el-form>
@@ -65,10 +65,11 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import Upload from '@/components/upload/Upload'
 import upload from '@/util/upload'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
+import axios from 'axios'
 const productFormRef = ref()
 const productForm = reactive({
   title: "",
@@ -76,6 +77,11 @@ const productForm = reactive({
   detail: "",
   cover: "",
   file: null,
+})
+const route = useRoute()
+onMounted(async (req, res) => {
+  let result = await axios.get(`/adminapi/product/list/${route.params}`)
+  Object.assign(productForm, result.data.data[0])
 })
 const productFormRules = reactive({
   title: [
@@ -103,10 +109,13 @@ const submitForm = () => {
   productFormRef.value.validate(async (valid) => {
     if (valid) {
       //提交
-      await upload("/adminapi/product/add", productForm)
+      await upload("/adminapi/product/list", productForm)
       router.push(`/product-manage/productlist`)
     }
   })
+}
+const handleBack = () => {
+  router.back()
 }
 </script>
 
