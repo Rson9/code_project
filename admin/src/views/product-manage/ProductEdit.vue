@@ -80,7 +80,8 @@ const productForm = reactive({
 })
 const route = useRoute()
 onMounted(async (req, res) => {
-  let result = await axios.get(`/adminapi/product/list/${route.params}`)
+
+  const result = await axios.get(`/adminapi/product/list/${route.params.id}`)
   Object.assign(productForm, result.data.data[0])
 })
 const productFormRules = reactive({

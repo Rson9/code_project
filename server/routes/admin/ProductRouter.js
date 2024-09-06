@@ -8,9 +8,9 @@ const upload = multer({
   dest: 'public/coveruploads/'
 })
 
-ProductRouter.post('/adminapi/product/add', upload.single('file'), ProductController.add)
-ProductRouter.get('/adminapi/product/list', ProductController.getlist)
 ProductRouter.get('/adminapi/product/list/:id', ProductController.getlist)
+ProductRouter.get('/adminapi/product/list', ProductController.getlist)
+ProductRouter.post('/adminapi/product/add', upload.single('file'), ProductController.add)
 ProductRouter.post('/adminapi/product/list', upload.single('file'), ProductController.updatelist)
 ProductRouter.delete('/adminapi/product/list/:id', ProductController.deleteproduct)
 
