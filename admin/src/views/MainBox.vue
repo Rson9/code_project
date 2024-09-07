@@ -17,4 +17,3 @@ import SideMenu from '../components/mainbox/SideMenu.vue'
   height: calc(100vh - 60px);
 }
 </style>
-
