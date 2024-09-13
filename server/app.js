@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 var UserRouter = require('./routes/admin/UserRouter')
 var NewsRouter = require('./routes/admin/NewsRouter')
+var webNewsRouter = require('./routes/web/NewsRouter')
 const ProductRouter = require('./routes/admin/ProductRouter')
 const JWT = require('./util/JWT')
 
@@ -25,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
-
+app.use(webNewsRouter)
 app.use((req, res, next) => {
   if (req.url === '/adminapi/user/login') {
     next()
@@ -55,6 +56,7 @@ app.use((req, res, next) => {
 app.use(UserRouter)
 app.use(NewsRouter)
 app.use(ProductRouter)
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
