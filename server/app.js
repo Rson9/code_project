@@ -8,8 +8,9 @@ var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 var UserRouter = require('./routes/admin/UserRouter')
 var NewsRouter = require('./routes/admin/NewsRouter')
-var webNewsRouter = require('./routes/web/NewsRouter')
 const ProductRouter = require('./routes/admin/ProductRouter')
+var webNewsRouter = require('./routes/web/NewsRouter')
+var webProductRouter = require('./routes/web/ProductRouter')
 const JWT = require('./util/JWT')
 
 var app = express()
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use(webNewsRouter)
+app.use(webProductRouter)
 app.use((req, res, next) => {
   if (req.url === '/adminapi/user/login') {
     next()

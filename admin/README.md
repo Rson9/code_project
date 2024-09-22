@@ -12,10 +12,10 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 启动
 
 ```
-npm run build
+npm run serve
 ```
 
 ### 父子通信
